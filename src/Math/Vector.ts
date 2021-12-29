@@ -68,4 +68,13 @@ export class Vector {
   public map(callback: Function): Vector {
     return new Vector(callback(this.x), callback(this.y));
   }
+
+  /**
+   * Create a copy of the vector
+   *
+   * @returns copied vector
+   */
+  public copy(): Vector {
+    return this.times(1);
+  }
 }

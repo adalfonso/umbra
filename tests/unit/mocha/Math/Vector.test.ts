@@ -94,4 +94,14 @@ describe("Vector", () => {
       });
     });
   });
+
+  describe("copy", () => {
+    it("it copies a vector", () => {
+      const vector = new Sut(1, 1);
+      const copy = vector.copy();
+
+      expect(vector.toTuple()).to.deep.equal(copy.toTuple());
+      expect(vector).to.not.equal(copy);
+    });
+  });
 });
