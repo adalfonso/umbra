@@ -1,11 +1,11 @@
-import { Collidable } from "../Entity/Entity";
+import { CollidableTemplate } from "../Entity/types";
 import { TextRenderOptions, Ui } from "./Ui";
 import { Vector } from "../Math/Vector";
 
 /**
  * Canvas UI
  */
-export class CanvasUi implements Ui, Collidable {
+export class CanvasUi implements Ui, CollidableTemplate {
   /** HTML canvas element */
   private _canvas: HTMLCanvasElement;
 

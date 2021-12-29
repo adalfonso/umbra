@@ -25,13 +25,13 @@ describe("Util", function () {
     tests.forEach(([label, a, b, expected]) => {
       it(label, () => {
         const a_entity = <Collidable>{
-          position: { x: a[0], y: a[1] },
-          size: { x: a[2], y: a[3] },
+          position: () => ({ x: a[0], y: a[1] }),
+          size: () => ({ x: a[2], y: a[3] }),
         };
 
         const b_entity = <Collidable>{
-          position: { x: b[0], y: b[1] },
-          size: { x: b[2], y: b[3] },
+          position: () => ({ x: b[0], y: b[1] }),
+          size: () => ({ x: b[2], y: b[3] }),
         };
 
         expect(collides(a_entity, b_entity)).to.equal(expected);

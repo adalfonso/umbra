@@ -1,4 +1,4 @@
-import { Collidable } from "./Entity/Entity";
+import { Collidable } from "./Entity/types";
 
 /**
  * Create an animation frame loop
@@ -36,15 +36,18 @@ export const collides = (
   b: Collidable,
   inverse: boolean = false
 ): boolean => {
+  const pos_a = a.position();
+  const pos_b = b.position();
+  const size_a = a.size();
+  const size_b = b.size();
+
   const collides_x =
-    (b.position.x > a.position.x && b.position.x < a.position.x + a.size.x) ||
-    (b.position.x + b.size.x > a.position.x &&
-      b.position.x + b.size.x < a.position.x + a.size.x);
+    (pos_b.x > pos_a.x && pos_b.x < pos_a.x + size_a.x) ||
+    (pos_b.x + size_b.x > pos_a.x && pos_b.x + size_b.x < pos_a.x + size_a.x);
 
   const collides_y =
-    (b.position.y > a.position.y && b.position.y < a.position.y + a.size.y) ||
-    (b.position.y + b.size.y > a.position.y &&
-      b.position.y + b.size.y < a.position.y + a.size.y);
+    (pos_b.y > pos_a.y && pos_b.y < pos_a.y + size_a.y) ||
+    (pos_b.y + size_b.y > pos_a.y && pos_b.y + size_b.y < pos_a.y + size_a.y);
 
   if (inverse) {
     return collides_x && collides_y;

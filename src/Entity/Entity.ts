@@ -1,18 +1,12 @@
-import { Ui } from "../Ui/Ui";
+import { Collidable, CollidableTemplate } from "./types";
 import { Vector } from "../Math/Vector";
 
-/** Used for entites that can collides */
-export interface Collidable {
-  size: Vector;
-  position: Vector;
-}
+export const collidable = (template: CollidableTemplate): Collidable => {
+  let { size, position } = template;
 
-/** Can be drawn on the canvas */
-export interface Drawable {
-  draw(ui: Ui): void;
-}
-
-/** Has underlying data the can be updated according to elapsed time */
-export interface Updatable {
-  update(dt: number): Record<string, number>;
-}
+  return {
+    size: () => size.copy(),
+    position: () => position.copy(),
+    move: (delta: Vector) => (position = position.plus(delta)),
+  };
+};
