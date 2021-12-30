@@ -1,5 +1,5 @@
-import { Collidable } from "../../../src/Entity/Entity";
-import { collides, randomId } from "../../../src/Util";
+import { Entity } from "../../src/Entity/Entity";
+import { collides, randomId } from "../../src/Util";
 import { expect } from "chai";
 
 describe("Util", function () {
@@ -24,12 +24,12 @@ describe("Util", function () {
 
     tests.forEach(([label, a, b, expected]) => {
       it(label, () => {
-        const a_entity = <Collidable>{
+        const a_entity = <Entity>{
           position: () => ({ x: a[0], y: a[1] }),
           size: () => ({ x: a[2], y: a[3] }),
         };
 
-        const b_entity = <Collidable>{
+        const b_entity = <Entity>{
           position: () => ({ x: b[0], y: b[1] }),
           size: () => ({ x: b[2], y: b[3] }),
         };

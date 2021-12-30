@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Vector as Sut } from "../../../../src/Math/Vector";
+import { Vector as Sut } from "../../../src/Math/Vector";
 
 describe("Vector", () => {
   it("creates a new instance", () => {
